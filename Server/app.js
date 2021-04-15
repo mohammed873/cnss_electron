@@ -6,7 +6,27 @@ const db = require('./models');
 
 const port = process.env.PORT || 8080;
 
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    openapi: "3.0.0",
+    info: {
+      title: "CNSS Backend app",
+      description: "CNSS Backend app doc",
+      contact: {
+        name: "root",
+      },
+      server: ["http://localhost:5000"],
+    },
+  },
+  apis: ["./routes/*.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
 app.use(express.json());
