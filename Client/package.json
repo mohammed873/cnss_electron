@@ -1,30 +1,58 @@
 {
-  "name": "app_electron",
+  "name": "cnss",
+  "productName": "cnss",
   "version": "1.0.0",
-  "description": "Application desktop en utilise ElectronJS",
-  "main": "app.js",
+  "description": "My Electron application description",
+  "main": "src/index.js",
   "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MS-brahim/app_electron.git"
+  "keywords": [],
+  "author": {
+    "name": "belcaid abderrahim",
+    "email": "belcaidna@gmail.com"
   },
-  "keywords": [
-    "Node",
-    "Electron"
-  ],
-  "author": "Brahim",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MS-brahim/app_electron/issues"
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "cnss"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   },
-  "homepage": "https://github.com/MS-brahim/app_electron#readme",
   "dependencies": {
-    "axios": "^0.21.1",
-    "electron": "^12.0.4",
-    "jwt-decode": "^3.1.2",
-    "toastify-js": "^1.10.0"
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "electron": "12.0.4"
   }
 }

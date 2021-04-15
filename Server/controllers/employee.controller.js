@@ -51,7 +51,7 @@ const addEmployee = async (req, res) => {
             let output;
             output = `
             <h2>This is  Your Registration Number  and Password , Keep it Safe !!!</h2>
-            <p> Registration Number : ${req.body.password}</p>
+            <p> Email : ${req.body.mail}</p>;
             <p> Password : ${req.body.registration_number}</p>`;
 
             sendMail(req.body.mail,subject,text,output);
@@ -165,7 +165,7 @@ const getAllEmployee = async (req, res ) =>{
 const employeeById = async (req,res) =>{
 
 
-    let employee = await Employee.findOne({id : req.body.id})
+    let employee = await Employee.findOne({ where: {id: req.params.id} })
 
 
     if (!employee) {
